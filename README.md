@@ -332,7 +332,7 @@ ReactDOM.render(
   </Provider>),
 document.getElementById('container'));
 ```
-Note that we **must** define our `/movies/new` route first. Why? Because otherwise, the `/:id` route handler would catch it first and assing `"new"` to be the id.
+Note that we **must** define our `/movies/new` route first. Why? Because otherwise, the `/:id` route handler would catch it first and assessing `"new"` to be the id.
 
 Let's add a link to our Movies List to add a new movie.
 
