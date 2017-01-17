@@ -68,7 +68,7 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesPage);
 ```
 
 We're using `mapStateToProps` to pull the `movies` property from our state and attach it to the `props` of this component. We're also pulling the `fetchMovies` action and attaching that to props as well, that way when our component mounts, we can fire off the action to get it some data.
@@ -162,7 +162,7 @@ export default (props) => {
         <ul>
           {movies.map( movie =>
             <li key={movie.id}>
-              <Link to=`/movies/${movie.id}`>{movie.title}</Link>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
             </li>)}
         </ul>
       </div>
@@ -170,7 +170,7 @@ export default (props) => {
   )
 }
 ```
-Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any differnet content. What gives? The problem is, we've setup a child component, but we never actually said *where* it should render on the screen.
+Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any different content. What gives? The problem is, we've setup a child component, but we never actually said *where* it should render on the screen.
 
 In React, we can dynamically render child components by pulling them off of the `children` property on our components props. Let's update our `MoviesPage` so that it renders it's child components underneath the `MoviesList`
 
@@ -193,7 +193,7 @@ class MoviesPage extends Component {
 
 ...
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesPage);
 ```
 
 Now, any child components provided by ReactRouter will be rendered there. Remember, child components are defined by the nested structure of our routes under `Router`. Awesome! Refresh again - now we see our `MoviesShow` component displayed at our dynamic route.
@@ -349,7 +349,10 @@ export default (props) => {
     <div>
       <div className='col-md-4'>
         <ul>
-          {movies.map( (movie) => <MoviesListItem movie={movie} key={movie.id}/>)}
+        {movies.map( movie =>
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+          </li>)}
         </ul>
         <Link to="/movies/new">Add a Movie</Link>
       </div>
