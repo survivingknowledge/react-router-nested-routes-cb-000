@@ -249,7 +249,7 @@ Now we have set the children prop as the div specified above.  However just like
 Now the div with the word Hello will display in our Users component.  So children is a natural way to keep some of the content in our component the same, with the ability to pass through other content.  We use it the same way that we pass an argument to a function to allow the functions output to be flexible.  
 
 ### React Router takes advantage of this.props.children
-Here's how react router ties in.  React router properly assumes that by using the nested routes that you would like to have the component pointed to in the nested route as a child of the component referenced in the parent route.  So given the routes specified below, when you visit the url `/movies/3` react-router renders the MovieApp component, and sets the MoviesShow component as its child.  
+Here's how react router ties in.  When you use nested routes with react-router, the component pointed to in the nested route is set as to be a child of the component referenced in the parent route.  So given the routes specified below, when you visit the url `/movies/3` react-router renders the MovieApp component, and sets the MoviesShow component as the MovieApp component's child.  
 
 ```javascript
 ReactDOM.render(
@@ -264,6 +264,7 @@ ReactDOM.render(
   </Provider>),
 document.getElementById('container'));
 
+// Here, MovieShow is a child of the MoviePage.  
 ```
 
 The problem is, we never actually said *where* the children should render on the screen.  Let's do this.  
@@ -297,3 +298,5 @@ What we don't see is information particular to that movie, but we'll leave that 
 ### Summary
 
 So far we saw how to set up our nested routes.  We do so by making one route a child of the another route.  For example, in our application above the Route pointing to `/movies` is a parent of the route pointing to `/movies/:id`.  Similarly when a user visits the child url, the component from the parent route still displays, and the component from the child url is set as a child.  To display the child component, we must make use of `this.props.children`.
+
+>Note: Understanding this.props.children frequently confounds students and pros alike.  So feel free to take a break, and then review this codealong again.
