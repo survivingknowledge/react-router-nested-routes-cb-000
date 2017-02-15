@@ -68,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesPage);
 ```
 
 We're using the __mapStateToProps()__ function to pull the movies property from our state and attach it to the props of this component. We're also pulling the __fetchMovies()__ action and attaching that to props as well, that way when our component mounts, we can fire off the action to get it some data.
@@ -171,7 +171,7 @@ export default (props) => {
   );
 };
 ```
-Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any differnet content. What gives? The problem is, we've setup a child component, but we never actually said *where* it should render on the screen.
+Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any different content. What gives? The problem is, we've setup a child component, but we never actually said *where* it should render on the screen.
 
 In React, we can dynamically render child components by pulling them off of the __children__ property on our components props. Let's update our __MoviesPage__ component so that it renders it's child components underneath the __MoviesList__
 
@@ -320,7 +320,7 @@ ReactDOM.render(
 document.getElementById('container'));
 ```
 
-Note that we **must** define our `/movies/new` route first. Why? Because otherwise, the `/:id` route handler would catch it first and assing `"new"` to be the id.
+Note that we **must** define our `/movies/new` route first. Why? Because otherwise, the `/:id` route handler would catch it first and assessing `"new"` to be the id.
 
 Let's add a link to our Movies List to add a new movie.
 
