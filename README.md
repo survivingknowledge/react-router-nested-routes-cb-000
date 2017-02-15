@@ -48,10 +48,10 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps)(MoviesPage);
 ```
 
-Weusing `mapStateToProps` to pull the `movies` property from our store's state and attach it to the `props` of this component. As you see, our `MoviesPage` just renders out a `MoviesList` component. Our `MoviesList` is purely presentational.
+We using `mapStateToProps` to pull the `movies` property from our store's state and attach it to the `props` of this component. As you see, our `MoviesPage` just renders out a `MoviesList` component. Our `MoviesList` is purely presentational.
 
 ```javascript
 // src/components/MoviesList.js
