@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addMovie } from '../actions';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
 
 class MoviesNew extends Component {
 
@@ -17,7 +16,6 @@ class MoviesNew extends Component {
   handleOnSubmit(event) {
     event.preventDefault();
     this.props.addMovie(this.state);
-    browserHistory.push('/movies');
   }
 
   handleOnChange(event) {
