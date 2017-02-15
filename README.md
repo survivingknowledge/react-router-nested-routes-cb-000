@@ -117,10 +117,9 @@ import MoviesShow from './containers/MoviesShow'
 ReactDOM.render(
   (<Provider store={store} >
     <Router history={browserHistory} >
-      <Route path="/" component={App} >
-        <Route path='/movies' component={MoviePage} >
-          <Route path="/movies/:id" component={MoviesShow} />
-        </Route>
+      <Route path="/" component={App} />
+      <Route path='/movies' component={MoviePage} >
+        <Route path="/movies/:id" component={MoviesShow} />
       </Route>
     </Router>
   </Provider>),
