@@ -16,8 +16,10 @@ const store = createStore(rootReducer);
 ReactDOM.render(
   (<Provider store={store} >
     <Router history={browserHistory} >
-      <Route path="/" component={App} />
-      <Route path='/movies' component={MoviesPage} />
+      <Route path="/" component={App} >
+        <Route path='/movies' component={MoviesPage}>
+        </Route>
+      </Route>
     </Router>
   </Provider>),
 document.getElementById('container'));
