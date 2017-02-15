@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) => {
-  return(
+  return (
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
@@ -11,5 +11,5 @@ export default (props) => {
         </div>
       </div>
     </nav>
-  )
+  );
 }
