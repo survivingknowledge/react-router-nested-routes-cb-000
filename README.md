@@ -133,17 +133,17 @@ Let's add links in our `MoviesList` component so that we can click on different 
 ```javascript
 // src/components/MoviesList.js
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+
 export default (props) => {
   const movies = props.movies;
-
   return (
     <div>
       <div className='col-md-4'>
         <ul>
           {movies.map( movie =>
             <li key={movie.id}>
-              <Link to=`/movies/${movie.id}`>{movie.title}</Link>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
             </li>)}
         </ul>
       </div>
@@ -151,7 +151,7 @@ export default (props) => {
   )
 }
 ```
-Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any different content. What gives?
+Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any content that would be in our MoviesShow page.  We only continue to see content from the MoviesList component.  What gives?
 
 ### Understanding Children
 
@@ -199,7 +199,9 @@ class App extends Component {
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
-Here, we changed things such that a child of users is the div component with the word hello in it.  This is equivalent to passing the children props a value of that component.  So if you prefer, you can think of the code as the following:
+Here, we changed things such that a child of users is the div component with the word hello in it.  This is new.
+
+It's equivalent to passing the children props a value of that component.  So if you prefer, you can think of the code as the following:
 
 ```javascript
 ...
@@ -232,6 +234,11 @@ Now we have set the children prop as the div specified above.  However just like
       )
     )
   }
+```
+
+Let's also go back to passing our div element as a child to our Users component in the correct way.  
+
+```javascript
   class App extends Component {
     render(){
       return (
@@ -246,6 +253,8 @@ Now we have set the children prop as the div specified above.  However just like
 ```
 
 Now the div with the word Hello will display in our Users component.  So children is a natural way to keep some of the content in our component the same, with the ability to pass through other content.  We use it the same way that we pass an argument to a function to allow the functions output to be flexible.  
+
+The way it is implemented is by passing a separate child component in between the beginning the opening bracket and closing bracket of a parent component.  Then we access that child component inside the parent, as one of the props.  Think of it like passing an argument to a function, it makes life easier.
 
 ### React Router takes advantage of this.props.children
 Here's how react router ties in.  When you use nested routes with react-router, the component pointed to in the nested route is set as to be a child of the component referenced in the parent route.  So given the routes specified below, when you visit the url `/movies/3` react-router renders the MovieApp component, and sets the MoviesShow component as the MovieApp component's child.  
