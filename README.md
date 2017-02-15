@@ -156,7 +156,9 @@ Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, 
 
 ### Understanding Children
 
-Well to understand why this is not working, we first need to take another look at `this.props.children` in react.  Bear with me on a quick sidebar.  So far, every time that we have added a custom component, that component has been self-closing.  For example:
+Well to understand why this is not working, we first need to take another look at `this.props.children` in react.  Bear with me on a quick sidebar.  But please take your time in understanding this.  It's crucial to understanding nested routes in a react-redux application.  Ok, let's go.
+
+So far, every time that we have added a custom component, that component has been self-closing.  For example:
 
 ```javascript
   import React, { Component } from 'react'
